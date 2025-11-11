@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EARTHCHAIN — Where Good Actions Become Value</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="EARTHCHAIN rewards positive impact with E-COINS. Turn recycling, teaching, and planting trees into real economic value." />
+  <!-- Leaflet Map (online CDN; optional) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin=""></script>
+</head>
+<body>
+  <header class="nav">
+    <div class="brand">
+      <img src="assets/logo.svg" alt="EARTHCHAIN logo" />
+      <span>EARTHCHAIN</span>
+    </div>
+    <nav>
+      <a href="#how">How it Works</a>
+      <a href="#dashboard">App</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#calculator">Impact Calculator</a>
+      <a href="#map">Map</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#donate">Support</a>
+      <a href="#partners">Partners</a>
+      <a href="#ambassadors">Ambassadors</a>
+      <a href="#companies">For Companies</a>
+      <a href="#blog">News</a>
+      <a href="#faq">FAQ</a>
+      <a href="#join" class="btn btn-primary">Join</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="hero-inner">
+      <h1><span class="neon">Where Good Actions Become Value</span></h1>
+      <p>Earn <strong>E-COINS</strong> for verified impact: recycling, tree planting, teaching and community projects — all recorded with AI + blockchain.</p>
+      <div class="cta">
+        <a href="#how" class="btn btn-primary">See how it works</a>
+        <a href="#donate" class="btn btn-ghost">Support the cause</a>
+      </div>
+      <div class="stats">
+        <div><span class="counter" data-target="12842">0</span><small>Actions verified</small></div>
+        <div><span class="counter" data-target="342000">0</span><small>E-COINS issued</small></div>
+        <div><span class="counter" data-target="76">0</span><small>Communities onboard</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <h2 class="section-title">How it Works</h2>
+    <div class="steps">
+      <div class="card reveal">
+        <div class="step">1</div>
+        <h3>Do a good action</h3>
+        <p>Recycle, plant trees, teach a workshop or join a community project.</p>
+      </div>
+      <div class="card reveal">
+        <div class="step">2</div>
+        <h3>Verified by tech</h3>
+        <p>Upload proof; AI + blockchain verify the action to prevent fraud.</p>
+      </div>
+      <div class="card reveal">
+        <div class="step">3</div>
+        <h3>Earn E-COINS</h3>
+        <p>Receive a stable digital currency backed by real environmental value.</p>
+      </div>
+      <div class="card reveal">
+        <div class="step">4</div>
+        <h3>Redeem</h3>
+        <p>Exchange E-COINS for products, services or money with our partners.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="dashboard" class="section section-alt">
+    <h2 class="section-title">Your Impact Dashboard</h2>
+    <div class="dash-wrap reveal">
+      <div class="dash">
+        <div class="dash-header">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <strong>EARTHCHAIN — Profile</strong>
+        </div>
+        <div class="dash-body">
+          <div class="kpis">
+            <div class="kpi"><h4>E-COINS</h4><div class="kpi-value">312</div></div>
+            <div class="kpi"><h4>Verified Actions</h4><div class="kpi-value">42</div></div>
+            <div class="kpi"><h4>Tier</h4><div class="kpi-value">Guardian</div></div>
+          </div>
+          <div class="timeline">
+            <div class="tl-item"><span>🌱 Tree planting</span><small>+12 E-COINS</small></div>
+            <div class="tl-item"><span>♻️ Recycling drop</span><small>+6 E-COINS</small></div>
+            <div class="tl-item"><span>📚 Teaching session</span><small>+18 E-COINS</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-copy">
+        <h3>Transparent & verifiable</h3>
+        <p>Every action is traceable. Smart verification tools prevent double counting and reward you fairly.</p>
+        <ul class="bullets">
+          <li>AI fraud checks</li>
+          <li>Blockchain transparency</li>
+          <li>Community validation</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="leaderboard" class="section">
+    <h2 class="section-title">Impact Leaderboard</h2>
+    <div class="table-wrap reveal">
+      <table class="table">
+        <thead><tr><th>#</th><th>User</th><th>City</th><th>Impact</th><th>E-COINS</th></tr></thead>
+        <tbody id="lb-body"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="calculator" class="section section-alt">
+    <h2 class="section-title">Impact Calculator</h2>
+    <div class="calc reveal">
+      <div class="calc-grid">
+        <label>Kg recycled<input id="kg" type="number" min="0" value="5"/></label>
+        <label>Trees planted<input id="trees" type="number" min="0" value="2"/></label>
+        <label>Hours teaching<input id="hours" type="number" min="0" value="1"/></label>
+      </div>
+      <button class="btn btn-primary" onclick="calcImpact()">Calculate</button>
+      <div class="calc-result" id="calc-result"></div>
+      <small class="note">*Estimates only. Actual rewards depend on verification and local incentives.</small>
+    </div>
+  </section>
+
+  <section id="map" class="section">
+    <h2 class="section-title">Communities on the Map</h2>
+    <div id="mapview" class="map reveal">Loading map… (requires internet)</div>
+    <small class="note">Map uses Leaflet CDN — it will load when you're online.</small>
+  </section>
+
+  <section id="benefits" class="section">
+    <h2 class="section-title">Benefits for Everyone</h2>
+    <div class="grid3">
+      <div class="card reveal">
+        <h3>For People</h3>
+        <p>Get paid for doing good. Build a verifiable impact profile you can use for jobs, grants and scholarships.</p>
+      </div>
+      <div class="card reveal">
+        <h3>For Communities</h3>
+        <p>Mobilize neighbors around local goals: clean streets, healthy forests, and learning hubs.</p>
+      </div>
+      <div class="card reveal">
+        <h3>For Companies</h3>
+        <p>Meet ESG goals, sponsor local actions and redeem E-COINS as carbon-aligned incentives.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="donate" class="section donate">
+    <h2 class="section-title">Support the Cause</h2>
+    <p class="section-lead">Your contribution helps us keep rewarding good actions with E-COINS. 100% of donations feed the Impact Rewards Pool.</p>
+    <div class="donate-grid">
+      <div class="card reveal">
+        <h3>Card / PayPal</h3>
+        <p>Use a fast and secure checkout.</p>
+        <a class="btn btn-primary" href="#" onclick="alert('Replace this link with your PayPal/Stripe checkout URL');">Donate</a>
+        <small>Tip: replace the <em>Donate</em> button URL with your real checkout.</small>
+      </div>
+      <div class="card reveal">
+        <h3>Crypto</h3>
+        <div class="wallet">
+          <label>USDT (TRC20)</label>
+          <div class="copyline">
+            <code id="usdt">TVExampleTRC20WalletAddressXXXXXXXXXXXXXXXX</code>
+            <button onclick="copy('usdt')">Copy</button>
+          </div>
+        </div>
+        <div class="wallet">
+          <label>BTC</label>
+          <div class="copyline">
+            <code id="btc">bc1examplebitcoinaddressxxxxxxxxxxxxxxxxxx</code>
+            <button onclick="copy('btc')">Copy</button>
+          </div>
+        </div>
+       <!--  <small>Replace with your real wallet addresses.</small>-->
+      </div>
+      <div class="card reveal">
+        <h3>Bank Transfer</h3>
+        <p><strong>Bank:</strong> ——<br/><strong>Account:</strong> ——<br/><strong>Holder:</strong> ——</p>
+         <!--  <small>Replace with your local bank info.</small>-->
+      </div>
+      <div class="card reveal qrbox">
+        <h3>QR (PayPal/Wallet)</h3>
+        <img src="assets/qr-placeholder.svg" alt="QR code placeholder" />
+      <!--   <small>Swap the image with your checkout QR.</small>... -->
+      </div>
+    </div>
+    <div class="pool reveal">
+      <h3>Impact Rewards Pool</h3>
+      <div class="bar"><span id="poolbar" style="width:40%"></span></div>
+      <div class="pool-legend"><strong>$4,000</strong> of <span>$10,000 goal</span></div>
+      <small>Edit the values in <code>script.js</code> to update the pool progress.</small>
+    </div>
+  </section>
+
+  <section id="partners" class="section section-alt">
+    <h2 class="section-title">Partners & Sponsors</h2>
+    <div class="logos reveal">
+      <div class="logo-box">EcoCity</div>
+      <div class="logo-box">GreenSchools</div>
+      <div class="logo-box">RecyLabs</div>
+      <div class="logo-box">TreeFund</div>
+    </div>
+    <small class="note">Replace with real partner logos.</small>
+  </section>
+
+  <section id="ambassadors" class="section">
+    <h2 class="section-title">Impact Ambassadors</h2>
+    <div class="ambassadors reveal">
+      <div class="amb-card">
+        <h3>Why join?</h3>
+        <ul>
+          <li>Earn extra E-COINS</li>
+          <li>Certification & badge</li>
+          <li>Invite-only events</li>
+        </ul>
+      </div>
+      <form class="amb-form" onsubmit="event.preventDefault(); alert('Submitted! (Connect to your backend later)');">
+        <label>Full name<input required/></label>
+        <label>Email<input type="email" required/></label>
+        <label>City<input required/></label>
+        <button class="btn btn-primary" type="submit">Apply</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="companies" class="section section-alt">
+    <h2 class="section-title">For Companies</h2>
+    <div class="grid2 reveal">
+      <div>
+        <h3>Sponsor the Rewards Pool</h3>
+        <p>Finance local actions and get transparent impact reports mapped to your ESG goals.</p>
+        <ul class="bullets">
+          <li>Custom campaigns</li>
+          <li>Branded community challenges</li>
+          <li>Verified CO₂ equivalents</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Why it matters</h3>
+        <p>Turn CSR budgets into measurable change while engaging employees and customers.</p>
+        <a href="#join" class="btn btn-primary">Become a sponsor</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="section">
+    <h2 class="section-title">News & Impact</h2>
+    <div class="grid3 reveal">
+      <article class="card">
+        <h3>Community X planted 120 trees</h3>
+        <p>Weekend challenge unlocked 480 E-COINS and a cleaner riverbank.</p>
+      </article>
+      <article class="card">
+        <h3>Recycling drive triples participation</h3>
+        <p>Six new drop points added across the city with partner RecyLabs.</p>
+      </article>
+      <article class="card">
+        <h3>University partnership announced</h3>
+        <p>GreenSchools joins to validate actions and promote climate education.</p>
+      </article>
+    </div>
+  </section>
+
+  <section id="roadmap" class="section section-alt">
+    <h2 class="section-title">Roadmap</h2>
+    <div class="roadmap reveal">
+      <div class="rm-item"><span>Q1 2025</span><p>Beta launch with pilot communities</p></div>
+      <div class="rm-item"><span>Q2 2025</span><p>School & NGO integrations</p></div>
+      <div class="rm-item"><span>Q3 2025</span><p>Corporate sponsor program</p></div>
+      <div class="rm-item"><span>2026</span><p>International expansion</p></div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <h2 class="section-title">FAQ</h2>
+    <div class="faq reveal">
+      <details open>
+        <summary>What is an E-COIN?</summary>
+        <p>A stable digital token you earn for verified impact. It can be redeemed for goods or money with partners.</p>
+      </details>
+      <details>
+        <summary>How are actions verified?</summary>
+        <p>Evidence + AI checks + blockchain record + optional community validation.</p>
+      </details>
+      <details>
+        <summary>Is it free?</summary>
+        <p>Yes. Partners and sponsors fund rewards; users keep 100% of their E-COINS.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="join" class="section cta-final">
+    <h2>Join the Movement</h2>
+    <p>Be the first to access EARTHCHAIN beta in your city.</p>
+    <form class="join-form" onsubmit="event.preventDefault(); document.getElementById('thanks').style.display='block';">
+      <input type="email" placeholder="Email address" required />
+      <button class="btn btn-primary" type="submit">Request invite</button>
+    </form>
+    <p id="thanks" style="display:none;margin-top:10px;">Thanks! We'll keep you posted.</p>
+  </section>
+
+  <footer class="footer">
+    <div>© 2025 EARTHCHAIN — Where Good Actions Become Value</div>
+    <div>Contact: contact@earthchain.com</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
