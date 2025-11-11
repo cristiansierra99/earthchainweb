@@ -6,7 +6,7 @@ a{color:#9fffea}
 /* Navigation */
 .nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 28px;background:rgba(2,10,14,.7);backdrop-filter:saturate(160%) blur(6px);border-bottom:1px solid #08353a}
 .nav .brand{display:flex;align-items:center;gap:10px;color:#00e6c1;font-weight:700}
-.nav img{height:28px}
+.nav img{height:36px;border-radius:8px}
 .nav a{margin-left:18px;text-decoration:none;color:#dffef6;opacity:.9}
 .nav .btn{margin-left:22px}
 
@@ -74,12 +74,10 @@ a{color:#9fffea}
 
 /* Donate */
 .donate .donate-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.wallet{margin:8px 0}
-.copyline{display:flex;gap:6px;align-items:center}
-.copyline code{background:#09131a;border:1px solid #0b2f2d;padding:6px 8px;border-radius:8px}
 .qrbox img{width:140px;height:140px;border:1px solid #0b2f2d;border-radius:8px;background:#09131a}
 .pool .bar{height:12px;background:#0f1921;border:1px solid #0b2f2d;border-radius:100px;overflow:hidden}
 .pool .bar span{display:block;height:100%;background:linear-gradient(90deg,#00e6c1,#19ffea)}
+.pool-legend{margin-top:6px;color:#9fd4c9}
 
 /* Partners */
 .logos{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}

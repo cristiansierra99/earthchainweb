@@ -6,14 +6,19 @@
   <title>EARTHCHAIN — Where Good Actions Become Value</title>
   <link rel="stylesheet" href="styles.css" />
   <meta name="description" content="EARTHCHAIN rewards positive impact with E-COINS. Turn recycling, teaching, and planting trees into real economic value." />
-  <!-- Leaflet Map (online CDN; optional) -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin=""></script>
+  <link rel="icon" href="assets/logo.png" type="image/png">
+  <meta property="og:title" content="EARTHCHAIN — Where Good Actions Become Value">
+  <meta property="og:description" content="Earn E-COINS for verified impact: recycling, tree planting, teaching and community actions.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cristiansierra99.github.io/earthchainweb/">
+  <meta property="og:image" content="https://cristiansierra99.github.io/earthchainweb/assets/logo.png">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 </head>
 <body>
   <header class="nav">
     <div class="brand">
-      <img src="assets/logo.svg" alt="EARTHCHAIN logo" />
+      <img src="assets/logo.png" alt="EARTHCHAIN logo" />
       <span>EARTHCHAIN</span>
     </div>
     <nav>
@@ -135,8 +140,7 @@
 
   <section id="map" class="section">
     <h2 class="section-title">Communities on the Map</h2>
-    <div id="mapview" class="map reveal">Loading map… (requires internet)</div>
-    <small class="note">Map uses Leaflet CDN — it will load when you're online.</small>
+    <div id="mapview" class="map reveal">Loading map…</div>
   </section>
 
   <section id="benefits" class="section">
@@ -159,48 +163,33 @@
 
   <section id="donate" class="section donate">
     <h2 class="section-title">Support the Cause</h2>
-    <p class="section-lead">Your contribution helps us keep rewarding good actions with E-COINS. 100% of donations feed the Impact Rewards Pool.</p>
+    <p class="section-lead">Your contribution helps us keep rewarding good actions with E-COINS. 100% goes to the Impact Rewards Pool.</p>
     <div class="donate-grid">
       <div class="card reveal">
-        <h3>Card / PayPal</h3>
-        <p>Use a fast and secure checkout.</p>
-        <a class="btn btn-primary" href="#" onclick="alert('Replace this link with your PayPal/Stripe checkout URL');">Donate</a>
-        <small>Tip: replace the <em>Donate</em> button URL with your real checkout.</small>
+        <h3>Donate (Card)</h3>
+        <p>Contact us to receive a secure payment link.</p>
+        <a class="btn btn-primary" href="mailto:contact@earthchain.com?subject=Donation%20to%20EARTHCHAIN">Request link</a>
       </div>
       <div class="card reveal">
         <h3>Crypto</h3>
-        <div class="wallet">
-          <label>USDT (TRC20)</label>
-          <div class="copyline">
-            <code id="usdt">TVExampleTRC20WalletAddressXXXXXXXXXXXXXXXX</code>
-            <button onclick="copy('usdt')">Copy</button>
-          </div>
-        </div>
-        <div class="wallet">
-          <label>BTC</label>
-          <div class="copyline">
-            <code id="btc">bc1examplebitcoinaddressxxxxxxxxxxxxxxxxxx</code>
-            <button onclick="copy('btc')">Copy</button>
-          </div>
-        </div>
-       <!--  <small>Replace with your real wallet addresses.</small>-->
+        <p>Request the official wallet address by email.</p>
+        <a class="btn btn-ghost" href="mailto:contact@earthchain.com?subject=Crypto%20Donation">Request wallet</a>
       </div>
       <div class="card reveal">
         <h3>Bank Transfer</h3>
-        <p><strong>Bank:</strong> ——<br/><strong>Account:</strong> ——<br/><strong>Holder:</strong> ——</p>
-         <!--  <small>Replace with your local bank info.</small>-->
+        <p>Ask for bank transfer details.</p>
+        <a class="btn btn-ghost" href="mailto:contact@earthchain.com?subject=Bank%20Transfer%20Donation">Request details</a>
       </div>
       <div class="card reveal qrbox">
-        <h3>QR (PayPal/Wallet)</h3>
-        <img src="assets/qr-placeholder.svg" alt="QR code placeholder" />
-      <!--   <small>Swap the image with your checkout QR.</small>... -->
+        <h3>QR</h3>
+        <img src="assets/logo.png" alt="QR" />
+        <small>Use the email buttons to receive a payment QR.</small>
       </div>
     </div>
     <div class="pool reveal">
       <h3>Impact Rewards Pool</h3>
       <div class="bar"><span id="poolbar" style="width:40%"></span></div>
       <div class="pool-legend"><strong>$4,000</strong> of <span>$10,000 goal</span></div>
-      <small>Edit the values in <code>script.js</code> to update the pool progress.</small>
     </div>
   </section>
 
@@ -212,7 +201,6 @@
       <div class="logo-box">RecyLabs</div>
       <div class="logo-box">TreeFund</div>
     </div>
-    <small class="note">Replace with real partner logos.</small>
   </section>
 
   <section id="ambassadors" class="section">
@@ -226,7 +214,7 @@
           <li>Invite-only events</li>
         </ul>
       </div>
-      <form class="amb-form" onsubmit="event.preventDefault(); alert('Submitted! (Connect to your backend later)');">
+      <form class="amb-form" onsubmit="event.preventDefault(); alert('Submitted!');">
         <label>Full name<input required/></label>
         <label>Email<input type="email" required/></label>
         <label>City<input required/></label>
